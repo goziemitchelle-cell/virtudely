@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import TClogo from "../assets/TClogo2.png";
+import logo from "../assets/TCLogo3.png";
 const Header = () => {
   const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
-    <nav className="bg-blue-900 shadow-sm px-6 py-4 flex items-center justify-between">
+    <nav className="bg-blue-900 h-12 px-6  flex items-center justify-between">
 
       {/* Logo */}
       <div className="flex items-center">
-        <img src={TClogo} alt="TalentConnect Logo" className="w-14 h-14 object-contain -mr-2" />
-        <span className="text-white font-extrabold text-xl tracking-tight">TalentConnect</span>
-      </div>
+  <img 
+    src={logo} 
+    alt="TalentConnect Logo" 
+    className="h-10 object-contain"
+    style={{ mixBlendMode: 'luminosity' }}
+  />
+</div>
 
       {/* Nav Links */}
       <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-white">
