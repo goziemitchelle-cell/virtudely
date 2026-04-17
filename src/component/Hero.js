@@ -1,47 +1,52 @@
-import react from "react";
+import React from "react";
 import office from "../assets/office.png";
-
+import Header from "./Header";
 
 const Hero = () => {
-    return(
-    <div className="relative bg-blue-900 text-white">
-        {/*background image*/}
-        <div className="absolute inset-0"
-        style={{ 
-            backgroundImage: `url(${office})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 15%',
-            opacity: 500,
-        }}></div>
+  return (
+    <div className="relative h-screen text-white overflow-hidden">
 
-        {/* Overlay */}
-      <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
+      {/* Navbar (NOW INSIDE HERO) */}
+      <Header />
 
-        {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-24">
-        <h1 className="text-4xl font-bold mb-4 leading-tight">
+      {/* Background image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${office})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center 15%",
+          opacity:100,
+        }}
+      ></div>
+
+      {/* Dark overlay (important for readability) */}
+      <div className="absolute inset-0 bg-blue-900/5"></div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-40">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
           Accelerate Your Growth <br />
           with Elite Remote Talent
         </h1>
 
-        <p className="mb-6 text-lg text-gray-200">
+        <p className="mb-8 text-lg text-gray-200 max-w-xl">
           Build your team with top-tier professionals in Sales, Marketing,
           Design & More.
         </p>
 
         <div className="flex space-x-4">
-          <button className="bg-green-500 px-6 py-3 rounded font-semibold">
+          <button className="bg-green-500 px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
             Hire Talent
           </button>
 
-          <button className="border border-white px-6 py-3 rounded">
+          <button className="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-blue-900 transition">
             Learn More
           </button>
         </div>
       </div>
     </div>
+  );
+};
 
-    )
-}
-
-export default Hero
+export default Hero;

@@ -1,8 +1,15 @@
 import React from "react";
-import {  FaUserFriends, FaBullseye, FaBullhorn, FaLaptopCode, FaHeadset } from "react-icons/fa";
+import { motion } from "framer-motion";
+import {
+  FaUserFriends,
+  FaBullseye,
+  FaBullhorn,
+  FaLaptopCode,
+  FaHeadset,
+} from "react-icons/fa";
 
 const services = [
-    {
+  {
     icon: <FaUserFriends size={40} className="text-blue-900" />,
     title: "Customer Service",
     desc: "Dedicated support teams for your clients.",
@@ -29,15 +36,39 @@ const services = [
   },
 ];
 
+const card = {
+  hidden: {
+    opacity: 0,
+    y: 80,
+    filter: "blur(6px)",
+  },
+  show: (i) => ({
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      delay: i * 0.15,
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+};
+
 const Services = () => {
   return (
-    <div className="bg-white py-5">
-      <div className="max-w-6x4 mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-6">
+    <div className="bg-white py-20 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10">
 
         {services.map((service, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-white p-2 text-center"
+            custom={index}
+            variants={card}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: false, amount: 0.3 }}
+            whileHover={{ y: -8, scale: 1.05 }}
+            className="text-center"
           >
             <div className="mb-4 flex justify-center">
               {service.icon}
@@ -50,7 +81,7 @@ const Services = () => {
             <p className="text-black text-md">
               {service.desc}
             </p>
-          </div>
+          </motion.div>
         ))}
 
       </div>

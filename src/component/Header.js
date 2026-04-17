@@ -1,25 +1,29 @@
 import { useState } from 'react';
-import logo from "../assets/TCLogo3.png";
+import logo from "../assets/Logo5.png";
+
 const Header = () => {
   const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
-    <nav className="bg-blue-900 h-12 px-6  flex items-center justify-between">
+    <nav className="absolute top-6 left-1/2 -translate-x-1/2 
+      bg-white/80 backdrop-blur-md shadow-lg border border-white/40
+      rounded-full px-6 py-3 
+      max-w-6xl w-[90%] 
+      flex items-center justify-between z-50">
 
       {/* Logo */}
       <div className="flex items-center">
-  <img 
-    src={logo} 
-    alt="TalentConnect Logo" 
-    className="h-10 object-contain"
-    style={{ mixBlendMode: 'luminosity' }}
-  />
-</div>
+        <img 
+          src={logo} 
+          alt="TalentConnect Logo" 
+          className="h-50 md:h-16 object-contain"
+        />
+      </div>
 
       {/* Nav Links */}
-      <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-white">
+      <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-blue-900">
 
-        {/* Services with Dropdown */}
+        {/* Services Dropdown */}
         <div className="relative">
           <button
             className="flex items-center space-x-1 hover:text-blue-800"
@@ -32,12 +36,12 @@ const Header = () => {
           </button>
 
           {servicesOpen && (
-            <div className="absolute top-8 left-0 bg-white shadow-lg rounded-md py-2 w-52 z-50 border border-gray-100">
-             <a href="#" className="block px-4 py-2 hover:bg-gray-50 text-gray-700">Customer Service</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50 text-gray-700">Sales Experts</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50 text-gray-700">Marketing Pros</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50 text-gray-700">Design & Development</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50 text-gray-700">Virtual Assistants</a>
+            <div className="absolute top-12 left-0 bg-white shadow-xl rounded-xl py-2 w-56 z-50 border border-gray-100">
+              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Customer Service</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Sales Experts</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Marketing Pros</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Design & Development</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Virtual Assistants</a>
             </div>
           )}
         </div>
@@ -47,7 +51,10 @@ const Header = () => {
         <a href="#" className="hover:text-blue-800">Testimonials</a>
       </div>
 
-      
+      {/* CTA Button */}
+      <button className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition">
+        Book a Call
+      </button>
 
     </nav>
   );
