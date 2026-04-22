@@ -1,4 +1,3 @@
-import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const steps = [
@@ -29,7 +28,9 @@ const container = {
 const card = {
   hidden: { opacity: 0, y: 70, scale: 0.96 },
   show: {
-    opacity: 1, y: 0, scale: 1,
+    opacity: 1,
+    y: 0,
+    scale: 1,
     transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
   },
 };
@@ -71,7 +72,10 @@ const HowItWorks = () => {
       <CloudTop />
 
       {/* Main section */}
-      <div className="bg-[#0f2356] py-16 px-6">
+      <div
+        id="how-it-works"
+        className="bg-[#0f2356] py-20 px-6 scroll-mt-32"
+      >
         <div className="max-w-5xl mx-auto text-center">
 
           {/* Header */}
@@ -82,13 +86,13 @@ const HowItWorks = () => {
             viewport={{ once: true, amount: 0.6 }}
           >
             <h2 className="text-4xl font-bold text-white mb-3">
-              How It <span className="text-black">Works</span>
+              How It <span className="text-green-600">Works</span>
             </h2>
 
-            {/* Gold underline accent */}
-            <div className="mx-auto mb-4 h-[3px] w-14 rounded-full bg-black" />
+            {/* Accent line */}
+            <div className="mx-auto mb-4 h-[3px] w-14 rounded-full bg-green-600" />
 
-            <p className="text-[#a8bfdf] mb-14 text-base">
+            <p className="text-[#c6d6f2] mb-14 text-base">
               Simple, fast, and effective process to scale your team.
             </p>
           </motion.div>
@@ -105,29 +109,31 @@ const HowItWorks = () => {
               <motion.div
                 key={index}
                 variants={card}
-                className="relative bg-white rounded-2xl p-8 text-center cursor-pointer"
+                className="relative bg-white rounded-2xl p-8 text-center cursor-pointer shadow-sm"
                 whileHover={{
                   y: -12,
                   scale: 1.03,
-                  boxShadow: "0 20px 48px rgba(15,35,86,0.28), 0 0 0 3px rgba(245,166,35,0.2)",
+                  boxShadow:
+                    "0 20px 48px rgba(15,35,86,0.28), 0 0 0 3px rgba(245,166,35,0.2)",
                 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
                 {/* Hover glow */}
-                <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500"
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500"
                   style={{
-                    background: "radial-gradient(ellipse at 60% 0%, rgba(245,166,35,0.12), transparent 70%)"
+                    background:
+                      "radial-gradient(ellipse at 60% 0%, rgba(245,166,35,0.12), transparent 70%)",
                   }}
                 />
 
-                {/* Gold dot accent */}
-                <div className="mx-auto mb-4 h-2 w-2 rounded-full bg-black"
-                  style={{ boxShadow: "0 0 0" }} />
+                {/* Dot */}
+                <div className="mx-auto mb-4 h-3 w-3 rounded-full bg-green-600" />
 
                 {/* Number */}
                 <div className="text-black text-5xl font-bold mb-4 leading-none">
                   {step.number[0]}
-                  <span className="text-blue-900">{step.number[1]}</span>
+                  <span className="text-green-600">{step.number[1]}</span>
                 </div>
 
                 {/* Title */}

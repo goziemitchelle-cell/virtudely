@@ -1,61 +1,148 @@
-import { useState } from 'react';
-import logo from "../assets/Logo5.png";
+import { useState, useEffect, useRef } from "react";
+import logo from "../assets/Logo4.png";
 
 const Header = () => {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const contactRef = useRef(null);
+  const servicesRef = useRef(null);
+
+  // Scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close dropdowns on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (contactRef.current && !contactRef.current.contains(e.target)) {
+        setContactOpen(false);
+      }
+
+      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
+        setServicesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <nav className="absolute top-6 left-1/2 -translate-x-1/2 
-      bg-white/80 backdrop-blur-md shadow-lg border border-white/40
-      rounded-full px-6 py-3 
-      max-w-6xl w-[90%] 
-      flex items-center justify-between z-50">
+    <nav
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 
+transition-all duration-300
+${scrolled
+  ? "bg-white/80 backdrop-blur-xl shadow-lg h-16 max-w-6xl"
+  : "bg-white/80 backdrop-blur-md h-20 max-w-7xl"
+}
+border border-gray-200 rounded-full w-[95%] px-10 flex items-center justify-between`}
+    >
+      {/* LOGO (LARGER) */}
+      <img
+        src={logo}
+        alt="TalentConnect Logo"
+        className={`object-contain transition-all duration-300
+        ${scrolled ? "h-20" : "h-40"}
+        `}
+      />
 
-      {/* Logo */}
-      <div className="flex items-center">
-        <img 
-          src={logo} 
-          alt="TalentConnect Logo" 
-          className="h-50 md:h-16 object-contain"
-        />
-      </div>
+      {/* NAV LINKS */}
+      <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-blue-900">
 
-      {/* Nav Links */}
-      <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-blue-900">
-
-        {/* Services Dropdown */}
-        <div className="relative">
+        {/* SERVICES DROPDOWN */}
+        <div className="relative" ref={servicesRef}>
           <button
-            className="flex items-center space-x-1 hover:text-blue-800"
             onClick={() => setServicesOpen(!servicesOpen)}
+            className="flex items-center gap-1 hover:text-blue-700 transition"
           >
-            <span>Services</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+            Services
+            <span className={`transition ${servicesOpen ? "rotate-180" : ""}`}>
+              ▼
+            </span>
           </button>
 
-          {servicesOpen && (
-            <div className="absolute top-12 left-0 bg-white shadow-xl rounded-xl py-2 w-56 z-50 border border-gray-100">
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Customer Service</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Sales Experts</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Marketing Pros</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Design & Development</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-50">Virtual Assistants</a>
-            </div>
-          )}
+          <div
+            className={`absolute top-10 left-0 bg-white shadow-xl rounded-xl py-2 w-56 border transition-all duration-200 origin-top
+            ${servicesOpen
+              ? "opacity-100 scale-100 translate-y-0"
+              : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+            }`}
+          >
+            {[
+              "Customer Service",
+              "Sales Experts",
+              "Marketing Pros",
+              "Design & Development",
+              "Virtual Assistants",
+            ].map((item, i) => (
+              <button
+                key={i}
+                className="block w-full text-left px-4 py-2 hover:bg-gray-50"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <a href="#" className="hover:text-blue-800">How It Works</a>
-        <a href="#" className="hover:text-blue-800">About Us</a>
-        <a href="#" className="hover:text-blue-800">Testimonials</a>
+        {/* LINKS */}
+        <a href="#how-it-works" className="hover:text-blue-700 transition">
+          How It Works
+        </a>
+
+        <a href="#about" className="hover:text-blue-700 transition">
+          About Us
+        </a>
+
+        <a href="#testimonials" className="hover:text-blue-700 transition">
+          Testimonials
+        </a>
+        <a href="#contactus" className="hover:text-blue-700 transition">Contact
+
+        </a>
       </div>
 
-      {/* CTA Button */}
-      <button className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition">
-        Book a Call
-      </button>
+      {/* CTA + CONTACT */}
+      <div className="relative" ref={contactRef}>
+        <button
+          onClick={() => setContactOpen(!contactOpen)}
+          className={`bg-green-600 text-white rounded-full transition-all duration-300
+          ${scrolled ? "px-4 py-1.5 text-sm" : "px-5 py-2"}
+          hover:bg-green-700 shadow-md`}
+        >
+          Book a Call
+        </button>
 
+        {/* CONTACT POPUP */}
+        <div
+          className={`absolute right-0 mt-3 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 p-5
+          transition-all duration-200 origin-top-right
+          ${contactOpen
+            ? "opacity-100 scale-100 translate-y-0"
+            : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+          }`}
+        >
+          <h4 className="text-gray-900 font-semibold mb-3">
+            Contact Us
+          </h4>
+
+          <div className="p-3 hover:bg-gray-50 text-black rounded-lg cursor-pointer">
+            ✉️ support@talentconnect.com
+          </div>
+
+          <div className="p-3 hover:bg-gray-50  text-black rounded-lg cursor-pointer">
+            📞 +234 800 000 0000
+          </div>
+        </div>
+      </div>
     </nav>
   );
 };

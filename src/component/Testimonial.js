@@ -1,106 +1,107 @@
 import React from "react";
 import { motion } from "framer-motion";
+import logo from "../assets/Logo4.png";
 
 const testimonials = [
   {
     name: "Sarah Johnson",
     role: "Marketing Manager",
-    text: "TalentConnect helped us scale our sales team in weeks. The quality of talent is exceptional.",
+    text: "TalentConnect helped us scale our sales team in weeks.",
   },
   {
     name: "David Chen",
     role: "Startup Founder",
-    text: "The onboarding was seamless. We got pre-vetted professionals who delivered immediately.",
+    text: "We got top-tier talent faster than expected.",
   },
   {
     name: "Amina Yusuf",
     role: "Operations Lead",
-    text: "It feels like having an in-house team without the stress of hiring.",
+    text: "Feels like an in-house team without the stress.",
+  },
+  {
+    name: "Michael Brown",
+    role: "CEO",
+    text: "Our productivity doubled after working with them.",
+  },
+  {
+    name: "Jessica Lee",
+    role: "HR Manager",
+    text: "The hiring process became effortless and fast.",
+  },
+  {
+    name: "Ibrahim Bello",
+    role: "Business Owner",
+    text: "Highly reliable talent. Highly recommended.",
   },
 ];
 
-// DIFFERENT ANIMATION STYLE (left / right reveal)
-const variants = [
-  {
-    hidden: { opacity: 0, x: -120, rotate: -3 },
-    show: {
-      opacity: 1,
-      x: 0,
-      rotate: 0,
-      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
-    },
-  },
-  {
-    hidden: { opacity: 0, y: 60, scale: 0.95 },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
-    },
-  },
-  {
-    hidden: { opacity: 0, x: 120, rotate: 3 },
-    show: {
-      opacity: 1,
-      x: 0,
-      rotate: 0,
-      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
-    },
-  },
-];
+// duplicate for seamless loop
+const duplicated = [...testimonials, ...testimonials];
 
 const Testimonials = () => {
   return (
-    <div className="relative bg-gray-100 py-28 overflow-hidden">
+    <div
+      id="testimonials"
+      className="relative bg-white py-24 overflow-hidden scroll-mt-32"
+    >
 
-      {/* soft background glow (like Digireps) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-200/30 blur-3xl rounded-full" />
+      {/* ✨ NEW: Soft center watermark logo */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+        <img src={logo} alt="logo" className="h-72 w-auto" />
+      </div>
 
-      <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+      {/* Header */}
+      <div className="text-center mb-16 px-6 relative z-10">
+        <h2 className="text-4xl font-bold text-blue-950">
+          What Our Clients Say
+        </h2>
+        <p className="text-gray-600 mt-2">
+          Real results from companies scaling with TalentConnect.
+        </p>
+      </div>
 
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold text-blue-900 mb-4">
-            What Our Clients Say
-          </h2>
-          <p className="text-gray-600 mb-16">
-            Real results from companies scaling with TalentConnect.
-          </p>
-        </motion.div>
+      {/* SLIDER WRAPPER */}
+      <div className="relative">
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-10">
+        {/* FADE LEFT */}
+        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10" />
 
-          {testimonials.map((item, index) => (
-            <motion.div
-              key={index}
-              variants={variants[index]}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false, amount: 0.3 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-white p-8 rounded-2xl shadow-sm relative"
-            >
-              <p className="text-gray-600 mb-6 text-sm">
-                "{item.text}"
-              </p>
+        {/* FADE RIGHT */}
+        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10" />
 
-              <div className="border-t pt-4">
-                <h4 className="font-semibold text-blue-900">
-                  {item.name}
-                </h4>
-                <p className="text-sm text-gray-500">{item.role}</p>
+        {/* SLIDER */}
+        <div className="overflow-hidden relative z-10">
+          <motion.div
+            className="flex gap-8 px-6"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 45,
+              ease: "linear",
+            }}
+          >
+            {duplicated.map((item, index) => (
+              <div
+                key={index}
+                className="min-w-[300px] md:min-w-[350px] bg-blue-950 p-6 rounded-2xl shadow-sm hover:shadow-lg transition"
+              >
+                <p className="text-white text-lg mb-4">
+                  "{item.text}"
+                </p>
+
+                <div className="border-t border-white/20 pt-3">
+                  <h4 className="font-semibold text-white">
+                    {item.name}
+                  </h4>
+                  <p className="text-sm text-green-600">
+                    {item.role}
+                  </p>
+                </div>
               </div>
-            </motion.div>
-          ))}
-
+            ))}
+          </motion.div>
         </div>
+
       </div>
     </div>
   );

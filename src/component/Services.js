@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import logo from "../assets/Logo4.png";
 import {
   FaUserFriends,
   FaBullseye,
@@ -56,8 +57,14 @@ const card = {
 
 const Services = () => {
   return (
-    <div className="bg-white py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10">
+    <div className="relative bg-white py-20 overflow-hidden">
+
+      {/* ✨ NEW: Soft logo watermark */}
+      <div className="absolute top-6 left-6 opacity-8 pointer-events-none">
+        <img src={logo} alt="logo" className="h-20 w-auto" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10 relative z-10">
 
         {services.map((service, index) => (
           <motion.div
