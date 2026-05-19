@@ -55,8 +55,8 @@ const Header = () => {
       className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 transition-all duration-300
       ${
         scrolled
-          ? "bg-white/90 backdrop-blur-xl shadow-lg"
-          : "bg-white/80 backdrop-blur-md"
+          ? "bg-white/90 backdrop-blur-xl shadow-lg h-16 md:h-16"
+          : "bg-white/80 backdrop-blur-md h-20 md:h-20"
       }
       border border-gray-200 rounded-3xl w-[95%] px-4 md:px-8 py-3 flex items-center justify-between`}
     >
@@ -64,13 +64,13 @@ const Header = () => {
       <img
         src={logo}
         alt="logo"
-        className={`object-contain transition-all duration-300 ${
-          scrolled ? "h-14 md:h-18" : "h-20 md:h-28"
-        }`}
+        className={`object-contain transition-all duration-300
+        ${scrolled ? "h-12 md:h-16" : "h-14 md:h-20"}`}
       />
 
       {/* DESKTOP NAV */}
-      <div className="hidden md:flex items-center gap-8 text-sm font-medium text-blue-900">
+      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-blue-900">
+        
         {/* SERVICES */}
         <div className="relative" ref={servicesRef}>
           <button
@@ -103,6 +103,7 @@ const Header = () => {
 
       {/* RIGHT SIDE */}
       <div className="flex items-center gap-3">
+        
         {/* HAMBURGER */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -112,10 +113,10 @@ const Header = () => {
         </button>
 
         {/* CTA */}
-        <div className="relative" ref={contactRef}>
+        <div ref={contactRef}>
           <button
             onClick={() => setContactOpen(!contactOpen)}
-            className="bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-700"
+            className="bg-green-600 text-white px-4 md:px-5 py-2 rounded-full text-sm hover:bg-green-700"
           >
             Book a Call
           </button>
