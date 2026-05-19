@@ -1,41 +1,72 @@
 import { Routes, Route } from "react-router-dom";
 
-import Header from "./component/Header";
+import MainLayout from "./layout/Mainlayout";
+
+// pages/components
 import Hero from "./component/Hero";
 import Services from "./component/Services";
 import HowItWorks from "./component/HowItWorks";
 import Testimonials from "./component/Testimonial";
 import About from "./component/AboutUs";
 import ContactUs from "./component/ContactUs";
-import Footer from "./component/Footer";
 
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 
+// ✅ ADD THIS IMPORT
+import ScrollToTop from "./ScrollToTop";
+
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Services />
+      <HowItWorks />
+      <Testimonials />
+      <About />
+      <ContactUs />
+    </>
+  );
+}
+
 function App() {
   return (
-    <Routes>
-      {/* HOME PAGE */}
-      <Route
-        path="/"
-        element={
-          <div>
-            <Header />
-            <Hero />
-            <Services />
-            <HowItWorks />
-            <Testimonials />
-            <About />
-            <ContactUs />
-            <Footer />
-          </div>
-        }
-      />
+    <>
+      {/* 🔥 THIS FIXES SCROLL ON ROUTE CHANGE */}
+      <ScrollToTop />
 
-      {/* EXTRA PAGES */}
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/terms" element={<Terms />} />
-    </Routes>
+      <Routes>
+        {/* HOME */}
+        <Route
+          path="/"
+          element={
+            <MainLayout>
+              <HomePage />
+            </MainLayout>
+          }
+        />
+
+        {/* PRIVACY POLICY */}
+        <Route
+          path="/privacy-policy"
+          element={
+            <MainLayout>
+              <PrivacyPolicy />
+            </MainLayout>
+          }
+        />
+
+        {/* TERMS */}
+        <Route
+          path="/terms"
+          element={
+            <MainLayout>
+              <Terms />
+            </MainLayout>
+          }
+        />
+      </Routes>
+    </>
   );
 }
 

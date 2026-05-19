@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "../assets/Logo4.png";
+import logo from "../assets/VDlogo.png";
 
 const About = () => {
   return (
@@ -37,7 +37,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-5xl font-bold tracking-wide"
         >
-          About <span className="text-green-500">TalentConnect</span>
+          About <span className="text-green-500">VirtuDely</span>
         </motion.h2>
 
         {/* Subtitle */}
@@ -47,7 +47,7 @@ const About = () => {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="mt-6 text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed"
         >
-          TalentConnect is a next-generation hiring platform that connects top
+          VirtuDely is a next-generation hiring platform that connects top
           talent with forward-thinking companies. We make hiring faster,
           smarter, and more efficient through intelligent matching and seamless
           communication.

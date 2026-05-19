@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import { FaEnvelope, FaInstagram, FaPhoneAlt, FaLinkedin } from "react-icons/fa";
 
 
 const CTA = () => {
@@ -10,8 +10,8 @@ const CTA = () => {
     {
       icon: <FaEnvelope />,
       label: "Email",
-      value: "your@email.com",
-      link: "mailto:your@email.com",
+      value: "contact@virtudely.com",
+      link: "mailto:contact@virtudely.com",
     },
     {
       icon: <FaPhoneAlt />,
@@ -19,12 +19,19 @@ const CTA = () => {
       value: "+234 800 000 0000",
       link: "tel:+2348000000000",
     },
-    {
-      icon: <FaWhatsapp />,
-      label: "WhatsApp",
-      value: "Chat with us",
-      link: "https://wa.me/2348000000000",
+
+    {icon: <FaInstagram />,
+      label: "Instagram",
+      value: "@virtudely",
+      link: "https://www.instagram.com/virtudely",    
     },
+
+    { icon: <FaLinkedin />,
+      label: "LinkedIn",
+      value: "VirtuDely",
+      link: "https://www.linkedin.com/company/virtudely",
+    },
+  
   ];
 
   return (
@@ -41,6 +48,7 @@ const CTA = () => {
         <p className="text-blue-950 mb-10 text-lg">
           Reach us instantly — fast, simple, and reliable.
         </p>
+
 
         <motion.button
           onClick={() => setOpen(true)}

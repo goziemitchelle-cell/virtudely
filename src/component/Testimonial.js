@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "../assets/Logo4.png";
+import logo from "../assets/VDlogo.png";
 
 const testimonials = [
   {
     name: "Sarah Johnson",
     role: "Marketing Manager",
-    text: "TalentConnect helped us scale our sales team in weeks.",
+    text: "VirtuDely helped us scale our sales team in weeks.",
   },
   {
     name: "David Chen",
@@ -56,7 +56,7 @@ const Testimonials = () => {
           What Our Clients Say
         </h2>
         <p className="text-gray-600 mt-2">
-          Real results from companies scaling with TalentConnect.
+          Real results from companies scaling with VirtuDely.
         </p>
       </div>
 

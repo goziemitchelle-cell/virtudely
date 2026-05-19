@@ -35,15 +35,7 @@ const Hero = () => {
           Design & More.
         </p>
 
-        <div className="flex space-x-4">
-          <button className="bg-green-500 px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
-            Hire Talent
-          </button>
-
-          <button className="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-blue-900 transition">
-            Learn More
-          </button>
-        </div>
+      
       </div>
     </div>
   );

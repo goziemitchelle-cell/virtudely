@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "../assets/Logo4.png";
+import logo from "../assets/VDlogo.png";
 import {
   FaUserFriends,
   FaBullseye,
