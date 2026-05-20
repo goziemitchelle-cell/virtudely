@@ -124,8 +124,8 @@ const Header = () => {
           ☰
         </button>
 
-        {/* DESKTOP CTA */}
-        <div ref={contactRef} className="hidden md:block">
+        {/* DESKTOP CTA (TOGGLE EMAIL ONLY) */}
+        <div ref={contactRef} className="hidden md:block relative">
           <button
             onClick={() => setContactOpen(!contactOpen)}
             className="bg-green-600 text-white px-4 md:px-5 py-2 rounded-full text-sm hover:bg-green-700"
@@ -135,9 +135,8 @@ const Header = () => {
 
           {contactOpen && (
             <div className="absolute right-0 mt-3 w-72 bg-white shadow-xl rounded-xl p-4 border">
-              <p className="font-semibold mb-2">Contact Us</p>
-              <p>📧 contact@virtudely.com</p>
-              <p>📞 +234 800 000 0000</p>
+              <p className="font-semibold mb-2">Contact Email</p>
+              <p className="text-blue-900">📧 contact@virtudely.com</p>
             </div>
           )}
         </div>
@@ -173,7 +172,7 @@ const Header = () => {
             {navLinks}
           </div>
 
-          {/* MOBILE BOOK A CALL BUTTON (EMAIL) */}
+          {/* MOBILE BOOK A CALL BUTTON (EMAIL LINK) */}
           <a
             href="mailto:contact@virtudely.com?subject=Book%20a%20Call&body=Hi%20VirtuDely%2C%20I%20would%20like%20to%20book%20a%20call."
             className="bg-green-600 text-white text-center py-2 rounded-xl font-medium hover:bg-green-700 active:scale-95 transition"
