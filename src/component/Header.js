@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import logo from "../assets/VDlogo.png";
+import logo from "../assets/favicon2 ico.png";
 
 const Header = () => {
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -13,6 +13,7 @@ const Header = () => {
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -23,6 +24,7 @@ const Header = () => {
       if (contactRef.current && !contactRef.current.contains(e.target)) {
         setContactOpen(false);
       }
+
       if (servicesRef.current && !servicesRef.current.contains(e.target)) {
         setServicesOpen(false);
       }
@@ -38,12 +40,15 @@ const Header = () => {
       <a href="/#how-it-works" className="hover:text-blue-700">
         How It Works
       </a>
+
       <a href="/#about" className="hover:text-blue-700">
         About Us
       </a>
+
       <a href="/#testimonials" className="hover:text-blue-700">
         Testimonials
       </a>
+
       <a href="/#contactus" className="hover:text-blue-700">
         Contact
       </a>
@@ -55,22 +60,30 @@ const Header = () => {
       className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 transition-all duration-300
       ${
         scrolled
-          ? "bg-white/90 backdrop-blur-xl shadow-lg h-16 md:h-16"
-          : "bg-white/80 backdrop-blur-md h-20 md:h-20"
+          ? "bg-white/90 backdrop-blur-xl shadow-lg h-20 md:h-20"
+          : "bg-white/80 backdrop-blur-md h-24 md:h-24"
       }
       border border-gray-200 rounded-3xl w-[95%] px-4 md:px-8 py-3 flex items-center justify-between`}
     >
-      {/* LOGO */}
-      <img
-        src={logo}
-        alt="logo"
-        className={`object-contain transition-all duration-300
-        ${scrolled ? "h-12 md:h-16" : "h-14 md:h-20"}`}
-      />
+      {/* LOGO + BRAND */}
+      <div className="flex items-center gap-2 md:gap-3">
+        <img
+          src={logo}
+          alt="logo"
+          className={`object-contain transition-all duration-300
+          ${scrolled ? "h-14 md:h-16" : "h-16 md:h-20"}`}
+        />
+
+        <h1
+          className={`font-bold tracking-tight bg-gradient-to-r from-blue-900 via-slate-500 to-green-700 bg-clip-text text-transparent transition-all duration-300
+          ${scrolled ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"}`}
+        >
+          VirtuDely
+        </h1>
+      </div>
 
       {/* DESKTOP NAV */}
       <div className="hidden md:flex items-center gap-6 text-sm font-medium text-blue-900">
-        
         {/* SERVICES */}
         <div className="relative" ref={servicesRef}>
           <button
@@ -103,7 +116,6 @@ const Header = () => {
 
       {/* RIGHT SIDE */}
       <div className="flex items-center gap-3">
-        
         {/* HAMBURGER */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -112,8 +124,8 @@ const Header = () => {
           ☰
         </button>
 
-        {/* CTA */}
-        <div ref={contactRef}>
+        {/* DESKTOP CTA */}
+        <div ref={contactRef} className="hidden md:block">
           <button
             onClick={() => setContactOpen(!contactOpen)}
             className="bg-green-600 text-white px-4 md:px-5 py-2 rounded-full text-sm hover:bg-green-700"
@@ -160,6 +172,15 @@ const Header = () => {
           <div className="flex flex-col gap-4 font-medium text-blue-900">
             {navLinks}
           </div>
+
+          {/* MOBILE BOOK A CALL BUTTON (EMAIL) */}
+          <a
+            href="mailto:contact@virtudely.com?subject=Book%20a%20Call&body=Hi%20VirtuDely%2C%20I%20would%20like%20to%20book%20a%20call."
+            className="bg-green-600 text-white text-center py-2 rounded-xl font-medium hover:bg-green-700 active:scale-95 transition"
+          >
+            Book a Call
+          </a>
+
         </div>
       )}
     </nav>

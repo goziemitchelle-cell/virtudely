@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "../assets/VDlogo.png";
+import logo from "../assets/favicon2 ico.png";
 
 const testimonials = [
   {

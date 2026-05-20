@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom"; // ✅ add this
-import logo from "../assets/VDlogo.png";
+import logo from "../assets/favicon2 ico.png";
 
 const container = {
   hidden: { opacity: 0 },
