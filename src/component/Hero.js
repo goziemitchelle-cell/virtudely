@@ -4,29 +4,27 @@ import Header from "./Header";
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[100svh] md:h-screen text-white overflow-hidden">
+    <div className="relative w-full text-white overflow-hidden">
 
       {/* Navbar */}
       <Header />
 
       {/* Background Image */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${office})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center 15%",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={office}
+          alt="Office"
+          className="w-full h-full object-contain md:object-cover object-center"
+        />
+      </div>
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-blue-900/5"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-blue-900/5 -z-10"></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 h-full flex items-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 min-h-[100svh] flex items-center">
 
-        <div className="w-full pt-20 md:pt-0">
+        <div className="w-full pt-24 md:pt-0">
 
           {/* Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
