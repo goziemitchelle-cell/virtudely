@@ -31,8 +31,9 @@ const Hero = () => {
           {/* Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Accelerate Your Growth
-            <br className="hidden sm:block" />
-            with Elite Remote Talent
+            <br className="md:hidden" />
+            <span className="md:hidden">with Elite Remote Talent</span>
+            <span className="hidden md:inline">with Elite Remote Talent</span>
           </h1>
 
           {/* Paragraph */}
