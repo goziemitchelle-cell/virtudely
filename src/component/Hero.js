@@ -4,7 +4,7 @@ import Header from "./Header";
 
 const Hero = () => {
   return (
-    <div className="relative min-h-screen text-white overflow-hidden">
+    <div className="relative w-full h-[100svh] md:h-screen text-white overflow-hidden">
 
       {/* Navbar */}
       <Header />
@@ -16,7 +16,7 @@ const Hero = () => {
           backgroundImage: `url(${office})`,
           backgroundSize: "cover",
           backgroundPosition: "center 15%",
-          opacity: 1,
+          backgroundRepeat: "no-repeat",
         }}
       ></div>
 
@@ -24,13 +24,13 @@ const Hero = () => {
       <div className="absolute inset-0 bg-blue-900/5"></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center min-h-screen">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 h-full flex items-center">
 
-        <div className="w-full pt-24 sm:pt-32 md:pt-20">
+        <div className="w-full pt-20 md:pt-0">
 
           {/* Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Accelerate Your Growth{" "}
+            Accelerate Your Growth
             <br className="hidden sm:block" />
             with Elite Remote Talent
           </h1>
